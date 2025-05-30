@@ -15,3 +15,10 @@ export async function GET(){
     const data =  await NewSchema.find()
     return NextResponse.json({data})
 }
+
+export async function DELETE(req){
+    const id = req.nextUrl.searchParams.get('id');
+     await connectMongoDb();
+     await NewSchema.findByIdAndDelete(id);
+     return NextResponse.json({message:'DELETED SUCCESSFULLY'},{status:200})
+}
