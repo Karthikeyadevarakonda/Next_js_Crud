@@ -1,25 +1,31 @@
-import EditTopicForm from '@/components/EditTopicForm';
+import EditTopicForm from '@/components/EditTopicForm'
 import axios from 'axios';
 
-const Page = async ({ params }) => {
-  const { id } = params;
-
-  let name = '';
-  let description = '';
-
+const getUserById = async (id) => {
   try {
-    const res = await axios.get(`http://localhost:3000/api/UserData/${id}`);
-    if (res.status === 200 && res.data?.data) {
-      name = res.data.data.name;
-      description = res.data.data.description;
+   
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/UserData/${id}`);
+
+    if (res.status !== 200) {
+      throw new Error("FAILED TO FETCH USER WITH ID");
     }
+
+    return res.data.data; 
   } catch (err) {
-    console.error("ERROR:", err);
+    console.error("ERROR : ", err);
+    return null; 
   }
+}
+
+export default async function EditUser({ params }) {
+  const { id } = await params;
+  const data = await getUserById(id);
+
+  if (!data) return <p>Error loading data.</p>;
+
+  const { name, description } = data;
 
   return (
     <EditTopicForm id={id} name={name} description={description} />
   );
-};
-
-export default Page;
+}

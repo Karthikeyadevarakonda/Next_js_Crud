@@ -6,7 +6,7 @@ const DeleteButton = ({id,setData}) => {
      const router = useRouter();
   async function RemoveTodo(){
     try{
-       const res = await axios.delete(`http://localhost:3000/api/UserData?id=${id}`)
+       const res = await axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/api/UserData?id=${id}`);
 
        if(res.status !== 200) return alert("NO SUCH ID FOUND TO DELETE");
 

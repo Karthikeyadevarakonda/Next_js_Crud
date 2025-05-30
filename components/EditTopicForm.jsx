@@ -16,7 +16,7 @@ const EditTopicForm = ({id,name:oldName,description:olddes}) => {
         }
 
         try{
-          const res = await axios.put(`http://localhost:3000/api/UserData/${id}`,{name,description})
+          const res = await axios.put(`${process.env.NEXT_PUBLIC_BASE_URL}/api/UserData/${id}`,{name,description})
          if(res.status!==200){
              alert("ERROR IN UPDATING NO SUCH ID FOUND")
          }

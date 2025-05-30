@@ -4,18 +4,18 @@ import DeleteButton from "@/components/DeleteButton"
 import axios from "axios"
 import Link from "next/link"
 import { HiPencilSquare } from 'react-icons/hi2'; 
-
-
-
 import { useEffect, useState } from "react"
+import { BASE_URL } from "@/constants/constants";
 
 const Page = () => {
+   if(!BASE_URL){
+    return null;
+   }
     const [data,setData] = useState([])
     async function FetchData() {
        try{
-        const res = await axios.get("http://localhost:3000/api/UserData")
-        
-        if(res.data && res.data.data){
+          const res = await axios.get(`${BASE_URL}/api/UserData`); 
+        if(res?.data?.data){
             setData(res.data.data)
         }
        }catch(err){
