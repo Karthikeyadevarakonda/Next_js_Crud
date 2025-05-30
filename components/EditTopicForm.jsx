@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useState } from "react"
 import { useRouter } from "next/navigation";
+import { BASE_URL } from "@/constants/constants";
 
 const EditTopicForm = ({id,name:oldName,description:olddes}) => {
    const router = useRouter()

@@ -1,9 +1,10 @@
 import EditTopicForm from '@/components/EditTopicForm'
+import { BASE_URL } from '@/constants/constants';
 import axios from 'axios';
 
 const getUserById = async (id) => {
   try {
-   
+    
     const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/UserData/${id}`);
 
     if (res.status !== 200) {

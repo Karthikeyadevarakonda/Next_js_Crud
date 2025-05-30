@@ -1,6 +1,7 @@
 import { RiDeleteBin5Line } from "react-icons/ri";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { BASE_URL } from "@/constants/constants";
 
 const DeleteButton = ({id,setData}) => {
      const router = useRouter();

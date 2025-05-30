@@ -8,13 +8,13 @@ import { useEffect, useState } from "react"
 import { BASE_URL } from "@/constants/constants";
 
 const Page = () => {
-   if(!BASE_URL){
-    return null;
-   }
+  if(!process.env.NEXT_PUBLIC_BASE_URL){
+    return null
+  }
     const [data,setData] = useState([])
     async function FetchData() {
        try{
-          const res = await axios.get(`${BASE_URL}/api/UserData`); 
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/UserData`); 
         if(res?.data?.data){
             setData(res.data.data)
         }

@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useState } from "react"
 import { useRouter } from "next/navigation";
+import { BASE_URL } from "@/constants/constants";
 
 const page = () => {
     const router = useRouter()
@@ -18,7 +19,7 @@ const page = () => {
           }
         
         try{
-          let res = axios.post("http://localhost:3000/api/UserData",{name,description})
+          let res = axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/UserData`,{name,description})
           console.log("DATA POSTED :",res.data)
           setName("")
           setDescription("")
