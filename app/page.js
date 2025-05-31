@@ -5,7 +5,6 @@ import axios from "axios"
 import Link from "next/link"
 import { HiPencilSquare } from 'react-icons/hi2'; 
 import { useEffect, useState } from "react"
-import { BASE_URL } from "@/constants/constants";
 
 const Page = () => {
   const [data, setData] = useState([])
